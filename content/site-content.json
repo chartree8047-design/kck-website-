@@ -4,7 +4,10 @@
     "location_th": "ขุนช่างเคี่ยน เชียงใหม่ ประเทศไทย",
     "location_en": "Khun Chang Kian, Chiang Mai, Thailand",
     "elevation": "ประมาณ 1,350 เมตร / approximately 1,350 m",
-    "language_order": ["th", "en"]
+    "language_order": [
+      "th",
+      "en"
+    ]
   },
   "hero": {
     "title_th": "กาแฟขุนช่างเคี่ยน จากครอบครัวผู้ปลูกสู่ถ้วยของคุณ",
@@ -35,9 +38,17 @@
     }
   ],
   "varieties": [
-    {"name": "Red Bourbon"},
-    {"name": "KCK-09", "detail": "Caturra × Catimor"},
-    {"name": "KCK-432", "detail": "Local hybrid"}
+    {
+      "name": "Red Bourbon"
+    },
+    {
+      "name": "KCK-09",
+      "detail": "Caturra × Catimor"
+    },
+    {
+      "name": "KCK-432",
+      "detail": "Local hybrid"
+    }
   ],
   "processes": [
     {
@@ -58,25 +69,47 @@
   ],
   "booking": {
     "status": "request_only",
-    "capacity_per_request": {"min": 1, "max": 15},
-    "primary_days": ["Friday", "Saturday", "Sunday"],
+    "capacity_per_request": {
+      "min": 1,
+      "max": 15
+    },
+    "primary_days": [
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
     "confirmed_offers": [
       {
-        "name_th": "ประสบการณ์กาแฟและชุมชน",
-        "name_en": "Coffee & Community Experience",
-        "price_thb_per_person": 400
+        "name_th": "KCK Ecology Coffee Walk - จากผืนดินสู่กาแฟหนึ่งถ้วย",
+        "name_en": "KCK Ecology Coffee Walk - From Soil to Cup",
+        "price_thb_per_person": 300,
+        "duration_minutes": "60-90",
+        "includes": [
+          "guided ecology coffee walk",
+          "coffee tasting",
+          "KCK Discovery Set: 3 drip bags / 3 processes",
+          "4x6 guide"
+        ],
+        "minimum_group_equivalent": 4
       }
     ],
     "transport": [
-      {"name_en": "Shared van", "price_thb_per_person": 350},
-      {"name_en": "Private car", "price_thb_per_person": 650}
+      {
+        "name_en": "Shared van",
+        "price_thb_per_person": 350
+      },
+      {
+        "name_en": "Private car",
+        "price_thb_per_person": 650
+      }
     ],
     "homestay": {
       "available": true,
       "price_status": "confirm_later"
     },
     "notice_th": "การส่งแบบฟอร์มเป็นคำขอจอง KCK จะติดต่อกลับเพื่อยืนยันวัน เวลา ราคา และรายละเอียด",
-    "notice_en": "Submitting the form is a booking request. KCK will contact you to confirm the date, time, price, and details."
+    "notice_en": "Submitting the form is a booking request. KCK will contact you to confirm the date, time, price, and details.",
+    "minimum_charge_thb_per_round": 1200
   },
   "draft_items_not_for_publication": [
     "Cultural Workshop & Hemp Weaving",
