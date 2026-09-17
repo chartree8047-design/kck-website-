@@ -36,6 +36,14 @@ body {
 
 .hero__inner, main { width: min(100% - 2rem, 68rem); margin-inline: auto; }
 .hero__inner { padding: 5rem 0 4rem; }
+.brand-logo {
+  display: block;
+  width: clamp(7.5rem, 18vw, 9rem);
+  height: auto;
+  margin-bottom: 1.5rem;
+  border-radius: .35rem;
+  box-shadow: 0 .8rem 2rem rgba(0,0,0,.2);
+}
 .eyebrow, .tag { font-size: .75rem; font-weight: 850; letter-spacing: .13em; }
 .eyebrow { color: var(--mint); }
 h1 { margin: .65rem 0; font-size: clamp(3rem, 11vw, 6.7rem); line-height: .95; letter-spacing: -.04em; }
