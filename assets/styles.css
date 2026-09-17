@@ -59,11 +59,40 @@ a { color: inherit; }
   letter-spacing: .02em;
 }
 
-.brand img {
-  width: 3.25rem;
-  height: 3.25rem;
-  object-fit: cover;
-  border-radius: .2rem;
+.brand .brand-mark--kck { width: 3.25rem; height: 3.25rem; }
+
+.brand-mark {
+  display: inline-block;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: .35rem;
+  background-repeat: no-repeat;
+  box-shadow: 0 .7rem 1.8rem rgba(0,0,0,.18);
+}
+
+.brand-mark--kck {
+  width: 8.5rem;
+  height: 8.5rem;
+  background-image: url("kck-logo-official.jpeg");
+  background-size: 118% auto;
+  background-position: center 45%;
+}
+
+.brand-mark--bird {
+  width: 12rem;
+  height: 5.2rem;
+  background-color: #123541;
+  background-image: url("bird-friendly-logo-official.jpeg");
+  background-size: 106% auto;
+  background-position: center 75.3%;
+}
+
+.hero-brands {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .8rem;
+  margin-bottom: 2rem;
 }
 
 .nav-links {
