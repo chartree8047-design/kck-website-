@@ -59,41 +59,46 @@ a { color: inherit; }
   letter-spacing: .02em;
 }
 
-.brand .brand-mark--kck { width: 3.25rem; height: 3.25rem; }
+.brand .brand-mark--kck { width: 4.6rem; height: 3.1rem; }
 
 .brand-mark {
   display: inline-block;
   flex: 0 0 auto;
-  overflow: hidden;
-  border-radius: .35rem;
   background-repeat: no-repeat;
-  box-shadow: 0 .7rem 1.8rem rgba(0,0,0,.18);
+  background-size: contain;
+  background-position: center;
 }
 
 .brand-mark--kck {
-  width: 8.5rem;
-  height: 8.5rem;
-  background-image: url("kck-logo-official.jpeg");
-  background-size: 118% auto;
-  background-position: center 45%;
+  width: 11rem;
+  height: 7.5rem;
+  background-image: url("kck-logo-official.png");
 }
 
 .brand-mark--bird {
-  width: 12rem;
-  height: 5.2rem;
-  background-color: #123541;
-  background-image: url("bird-friendly-logo-official.jpeg");
-  background-size: 106% auto;
-  background-position: center 75.3%;
+  width: 11rem;
+  height: 5rem;
+  background-image: url("bird-friendly-logo-official.png");
 }
 
 .hero-brands {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: .8rem;
-  margin-bottom: 2rem;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
 }
+
+.hero-brands::before {
+  content: "";
+  order: 2;
+  width: 1px;
+  height: 5rem;
+  background: rgba(131,212,200,.48);
+}
+
+.hero-brands .brand-mark--kck { order: 1; }
+.hero-brands .brand-mark--bird { order: 3; }
 
 .nav-links {
   display: flex;
