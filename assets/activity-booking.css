@@ -36,28 +36,37 @@ body {
 
 .hero__inner, main { width: min(100% - 2rem, 68rem); margin-inline: auto; }
 .hero__inner { padding: 5rem 0 4rem; }
-.brand-marks { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; margin-bottom: 1.5rem; }
+.brand-marks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.brand-marks::before {
+  content: "";
+  order: 2;
+  width: 1px;
+  height: 5rem;
+  background: rgba(131,212,200,.48);
+}
 .brand-mark {
   flex: 0 0 auto;
-  overflow: hidden;
-  border-radius: .5rem;
   background-repeat: no-repeat;
-  box-shadow: 0 .8rem 2rem rgba(0,0,0,.2);
+  background-size: contain;
+  background-position: center;
 }
 .brand-mark--kck {
-  width: clamp(7rem, 18vw, 8.6rem);
-  height: clamp(7rem, 18vw, 8.6rem);
-  background-image: url("kck-logo-official.jpeg");
-  background-size: 118% auto;
-  background-position: center 45%;
+  order: 1;
+  width: clamp(9rem, 22vw, 11rem);
+  height: clamp(6.2rem, 15vw, 7.5rem);
+  background-image: url("kck-logo-official.png");
 }
 .brand-mark--bird {
-  width: clamp(9.5rem, 25vw, 12rem);
-  height: clamp(4.1rem, 10vw, 5.2rem);
-  background-color: #123541;
-  background-image: url("bird-friendly-logo-official.jpeg");
-  background-size: 106% auto;
-  background-position: center 75.3%;
+  order: 3;
+  width: clamp(9rem, 22vw, 11rem);
+  height: clamp(4rem, 10vw, 5rem);
+  background-image: url("bird-friendly-logo-official.png");
 }
 .eyebrow, .tag { font-size: .75rem; font-weight: 850; letter-spacing: .13em; }
 .eyebrow { color: var(--mint); }
