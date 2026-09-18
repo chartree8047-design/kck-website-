@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="จองกิจกรรม KCK Ecology Coffee Walk ที่ขุนช่างเคี่ยน เชียงใหม่">
+  <title>จอง KCK Ecology Coffee Walk</title>
+  <link rel="stylesheet" href="assets/activity-booking.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <div class="brand-marks" aria-label="ตราหลักของโครงการ">
+        <div class="brand-mark brand-mark--kck" role="img" aria-label="Khun Chang Kian Coffee Farmer"></div>
+        <div class="brand-mark brand-mark--bird" role="img" aria-label="Bird Friendly"></div>
+      </div>
+      <p class="eyebrow">KCK COFFEE FARMER • KHUN CHANG KIAN</p>
+      <h1>KCK Ecology<br>Coffee Walk</h1>
+      <p class="thai-title">จากผืนดินสู่กาแฟหนึ่งถ้วย</p>
+      <p class="hero__meta">60-90 นาที • 300 บาท/คน • รับไม่เกิน 15 คน/รอบ</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="intro-title">
+      <div>
+        <span class="tag">FROM SOIL TO CUP</span>
+        <h2 id="intro-title">เดิน เรียนรู้ ชิม และนำเรื่องราวกลับบ้าน</h2>
+        <p>เรียนรู้สวนกาแฟใต้ร่มเงาป่า ต้นกาแฟ การแปรรูป Washed, Honey และ Natural พร้อมชิมกาแฟที่ต้นทาง</p>
+      </div>
+      <aside class="gift">
+        <p class="gift__label">รวมในกิจกรรม</p>
+        <h3>KCK Discovery Set</h3>
+        <p>Drip Bag 3 ซอง จาก 3 Processes พร้อมคู่มือ 4×6 นิ้ว</p>
+        <div class="process-dots" aria-label="Washed, Honey, Natural">
+          <span class="dot dot--washed">01<br><small>WASHED</small></span>
+          <span class="dot dot--honey">02<br><small>HONEY</small></span>
+          <span class="dot dot--natural">03<br><small>NATURAL</small></span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="booking" aria-labelledby="booking-title">
+      <div class="booking__heading">
+        <span class="tag">BOOKING REQUEST</span>
+        <h2 id="booking-title">ส่งคำขอจองกิจกรรม</h2>
+        <p>กรอกข้อมูลแล้วระบบจะสร้างสรุปสำหรับส่งให้ KCK การส่งแบบฟอร์มยังไม่ถือเป็นการยืนยันการจอง</p>
+      </div>
+
+      <form id="booking-form">
+        <div class="fields">
+          <label>
+            ชื่อผู้จอง <span aria-hidden="true">*</span>
+            <input id="name" name="name" autocomplete="name" required>
+          </label>
+          <label>
+            โทรศัพท์ <span aria-hidden="true">*</span>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+          </label>
+          <label>
+            อีเมล
+            <input id="email" name="email" type="email" autocomplete="email">
+          </label>
+          <label>
+            สัญชาติ
+            <input id="nationality" name="nationality" autocomplete="country-name" value="ไทย">
+          </label>
+          <label>
+            วันที่ต้องการ <span aria-hidden="true">*</span>
+            <input id="date" name="date" type="date" required>
+          </label>
+          <label>
+            ช่วงเวลา <span aria-hidden="true">*</span>
+            <select id="time" name="time" required>
+              <option value="">เลือกเวลา</option>
+              <option>10:00-11:30</option>
+              <option>13:30-15:00</option>
+              <option>ขอให้ KCK แนะนำเวลา</option>
+            </select>
+          </label>
+          <label>
+            จำนวนผู้เข้าร่วม <span aria-hidden="true">*</span>
+            <input id="guests" name="guests" type="number" min="1" max="15" value="4" required>
+          </label>
+          <label>
+            ภาษาที่ใช้
+            <select id="language" name="language">
+              <option>ภาษาไทย</option>
+              <option>English</option>
+              <option>한국어 / Korean</option>
+            </select>
+          </label>
+          <label class="field--wide">
+            หมายเหตุหรือความต้องการเพิ่มเติม
+            <textarea id="notes" name="notes" rows="4" placeholder="เช่น มีเด็ก ผู้สูงอายุ ข้อจำกัดด้านการเดิน หรือแพ้อาหาร"></textarea>
+          </label>
+        </div>
+
+        <div class="price-card" aria-live="polite">
+          <div>
+            <span>ค่ากิจกรรมโดยประมาณ</span>
+            <strong id="estimated-total">1,200 บาท</strong>
+          </div>
+          <p id="price-note">4 คน × 300 บาท</p>
+          <p>รวม Discovery Set คนละ 1 ชุด • ไม่รวมการเดินทาง อาหาร และที่พัก</p>
+        </div>
+
+        <label class="consent">
+          <input id="consent" name="consent" type="checkbox" required>
+          <span>ยินยอมให้ KCK ติดต่อกลับเพื่อยืนยันวัน เวลา จำนวนที่ว่าง และรายละเอียดกิจกรรม</span>
+        </label>
+
+        <button class="primary" type="submit">สร้างสรุปคำขอจอง</button>
+      </form>
+
+      <section id="result" class="result" hidden aria-labelledby="result-title">
+        <div class="result__head">
+          <div>
+            <span class="tag">REQUEST SUMMARY</span>
+            <h2 id="result-title">สรุปคำขอจอง</h2>
+          </div>
+          <span id="request-id" class="request-id"></span>
+        </div>
+        <pre id="summary"></pre>
+        <div class="actions">
+          <button id="email-request" class="primary" type="button">ส่งทางอีเมล</button>
+          <button id="share-request" class="secondary" type="button">แชร์สรุป</button>
+          <button id="copy-request" class="secondary" type="button">คัดลอกข้อความ</button>
+        </div>
+        <p class="notice">KCK จะติดต่อกลับเพื่อยืนยัน การสร้างสรุปนี้ยังไม่ใช่หลักฐานยืนยันการจองหรือการชำระเงิน</p>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Khun Chang Kian Coffee Farmer × Bird Friendly</strong><br>
+    ขุนช่างเคี่ยน เชียงใหม่ • kck.coffee
+  </footer>
+  <script src="assets/activity-booking.js"></script>
+</body>
+</html>

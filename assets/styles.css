@@ -1,0 +1,221 @@
+:root {
+  --navy: #092f3b;
+  --teal: #0e5960;
+  --mint: #83d4c8;
+  --cream: #f5f1e8;
+  --paper: #fffdf8;
+  --gold: #c89b4a;
+  --ink: #10272d;
+  --muted: #587078;
+  --line: rgba(9, 47, 59, 0.16);
+  --radius: 1.25rem;
+  --shadow: 0 1rem 3rem rgba(9, 47, 59, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--cream);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: -apple-system, BlinkMacSystemFont, "Noto Sans Thai", "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+a { color: inherit; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(9, 47, 59, 0.96);
+  color: white;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+
+.nav {
+  max-width: 72rem;
+  min-height: 4.5rem;
+  margin: auto;
+  padding: .75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: .02em;
+}
+
+.brand .brand-mark--kck { width: 4.6rem; height: 3.1rem; }
+
+.brand-mark {
+  display: inline-block;
+  flex: 0 0 auto;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.brand-mark--kck {
+  width: 11rem;
+  height: 7.5rem;
+  background-image: url("kck-logo-official.png");
+}
+
+.brand-mark--bird {
+  width: 11rem;
+  height: 5rem;
+  background-image: url("bird-friendly-logo-official.png");
+}
+
+.hero-brands {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+}
+
+.hero-brands::before {
+  content: "";
+  order: 2;
+  width: 1px;
+  height: 5rem;
+  background: rgba(131,212,200,.48);
+}
+
+.hero-brands .brand-mark--kck { order: 1; }
+.hero-brands .brand-mark--bird { order: 3; }
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .75rem 1.25rem;
+  font-size: .9rem;
+}
+
+.nav-links a { text-decoration: none; }
+
+.hero {
+  color: white;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(131,212,200,.34), transparent 28rem),
+    linear-gradient(135deg, var(--navy), var(--teal));
+}
+
+.hero-inner,
+.section-inner {
+  max-width: 72rem;
+  margin: auto;
+  padding: 5rem 1.25rem;
+}
+
+.eyebrow {
+  color: var(--mint);
+  font-size: .82rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+h1, h2, h3 { line-height: 1.2; }
+
+h1 {
+  max-width: 18ch;
+  margin: .75rem 0 1.25rem;
+  font-size: clamp(2.4rem, 8vw, 5.4rem);
+}
+
+h2 {
+  margin: 0 0 .75rem;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+}
+
+.en {
+  opacity: .78;
+  font-size: .95em;
+}
+
+.lead {
+  max-width: 42rem;
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+}
+
+.section--paper { background: var(--paper); }
+.section--dark { background: var(--navy); color: white; }
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.cards {
+  margin-top: 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card {
+  padding: 1.5rem;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.card h3 { margin-top: 0; }
+
+.tag {
+  display: inline-flex;
+  padding: .35rem .7rem;
+  color: var(--navy);
+  background: var(--mint);
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 800;
+}
+
+.cta {
+  display: inline-flex;
+  margin-top: 1rem;
+  padding: .85rem 1.1rem;
+  border-radius: 999px;
+  background: var(--mint);
+  color: var(--navy);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.notice {
+  padding: 1rem 1.25rem;
+  border-left: .35rem solid var(--gold);
+  background: rgba(200,155,74,.12);
+  border-radius: .5rem;
+}
+
+footer {
+  padding: 2rem 1.25rem;
+  background: #061f27;
+  color: rgba(255,255,255,.78);
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .nav { align-items: flex-start; flex-direction: column; }
+  .nav-links { justify-content: flex-start; gap: .5rem 1rem; }
+  .hero-inner, .section-inner { padding-block: 3.5rem; }
+  .cards { grid-template-columns: 1fr; }
+}
