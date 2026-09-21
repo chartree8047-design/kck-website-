@@ -39,4 +39,14 @@
 
 ## สถานะ
 
-Initial information architecture — ยังไม่เชื่อมระบบรับจองจริงและยังไม่เผยแพร่เว็บไซต์
+เผยแพร่ผ่าน GitHub Pages แล้ว หน้าไทย–อังกฤษเชื่อม Google Form เดิมเพื่อส่งคำขอจอง ต้องตรวจสอบการรับคำตอบและการแจ้งเตือนใน Google Form แยกต่างหาก ไม่มีระบบตัดจำนวนที่ว่างอัตโนมัติ
+
+
+
+## เปิดเว็บไซต์ / Open the site
+
+https://chartree8047-design.github.io/kck-website-/
+
+Publish `main` from `/ (root)`. Keep the trailing hyphen in `kck-website-`. Do not use `/docs` as the publishing directory. Keep `assets` and `content` beside `index.html`.
+
+Both pages use `assets/styles.css` for official logos and shared styling, and read booking prices, capacity wording and the form URL from `content/site-content.json`. Static fallback text must also be updated when changing these values, so the site stays usable without JavaScript. Other experiences require confirmation before sale. Google Form questions, prices and response notifications must be maintained in the form itself.
