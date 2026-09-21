@@ -68,7 +68,7 @@
     }
   ],
   "booking": {
-    "status": "request_only",
+    "status": "google_form_request",
     "capacity_per_request": {
       "min": 1,
       "max": 15
@@ -86,7 +86,7 @@
         "duration_minutes": "60-90",
         "includes": [
           "guided ecology coffee walk",
-          "coffee tasting",
+          "Taste 3 processes from drip bags: Washed, Honey, Natural",
           "KCK Discovery Set: 3 drip bags / 3 processes",
           "4x6 guide"
         ],
@@ -109,7 +109,10 @@
     },
     "notice_th": "การส่งแบบฟอร์มเป็นคำขอจอง KCK จะติดต่อกลับเพื่อยืนยันวัน เวลา ราคา และรายละเอียด",
     "notice_en": "Submitting the form is a booking request. KCK will contact you to confirm the date, time, price, and details.",
-    "minimum_charge_thb_per_round": 1200
+    "minimum_charge_thb_per_round": 1200,
+    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSeH-NXs3wPhU0rDDmhLbYch8k0r_8BeXvC0YlAs5EUI5VLSCg/viewform",
+    "capacity_policy_th": "ไม่เกิน 15 คน/วัน ต้องรอ KCK ตรวจสอบจำนวนที่ว่างและยืนยัน",
+    "capacity_policy_en": "Up to 15 guests per day, subject to KCK checking availability and confirming."
   },
   "draft_items_not_for_publication": [
     "Cultural Workshop & Hemp Weaving",
