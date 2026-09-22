@@ -59,7 +59,7 @@ a { color: inherit; }
   letter-spacing: .02em;
 }
 
-.brand .brand-mark--kck { width: 4.6rem; height: 3.1rem; }
+.brand .brand-mark--kck { width: 4.6rem; height: 3.1rem; background-size: 110% auto; background-position: center 25%; }
 
 .brand-mark {
   display: inline-block;
@@ -72,13 +72,17 @@ a { color: inherit; }
 .brand-mark--kck {
   width: 11rem;
   height: 7.5rem;
-  background-image: url("kck-logo-official.png");
+  background-image: url("kck-logo-official.jpeg");
+  background-size: 100% auto;
+  background-position: center 25%;
 }
 
 .brand-mark--bird {
   width: 11rem;
   height: 5rem;
-  background-image: url("bird-friendly-logo-official.png");
+  background-image: url("bird-friendly-logo-official.jpeg");
+  background-size: 100% auto;
+  background-position: center 75%;
 }
 
 .hero-brands {
@@ -214,7 +218,9 @@ footer {
 }
 
 @media (max-width: 760px) {
-  .nav { align-items: flex-start; flex-direction: column; }
+  .nav { min-height: 4rem; align-items: center; flex-direction: row; }
+  .brand { gap: .5rem; font-size: .95rem; }
+  .brand .brand-mark--kck { width: 3.25rem; height: 2.25rem; }
   .nav-links { justify-content: flex-start; gap: .5rem 1rem; }
   .hero-inner, .section-inner { padding-block: 3.5rem; }
   .cards { grid-template-columns: 1fr; }
