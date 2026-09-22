@@ -1,5 +1,14 @@
 /* Booking page additions; shared logos, palette and layout come from styles.css. */
 iframe[data-booking-frame] { width:100%; min-height:1100px; border:1px solid var(--line); border-radius:1rem; background:white; }
-main .hero-brands { background:var(--navy); padding:1.5rem; border-radius:1rem; }
+main .hero-brands { width:fit-content; max-width:100%; background:var(--navy); padding:1rem 1.25rem; border-radius:1rem; flex-wrap:nowrap; }
+main .hero-brands .brand-mark--kck { width:8.5rem; height:5.5rem; }
+main .hero-brands .brand-mark--bird { width:8.5rem; height:4rem; }
 main h1 { max-width:100%; }
-@media (max-width:600px) { iframe[data-booking-frame] { min-height:1250px; } }
+@media (max-width:600px) {
+  iframe[data-booking-frame] { min-height:1250px; }
+  main.section-inner { padding-top:2rem; }
+  main .hero-brands { width:100%; justify-content:center; gap:.6rem; margin-bottom:1.5rem; }
+  main .hero-brands::before { height:3.25rem; }
+  main .hero-brands .brand-mark--kck { width:7rem; height:4.5rem; }
+  main .hero-brands .brand-mark--bird { width:7rem; height:3.5rem; }
+}
