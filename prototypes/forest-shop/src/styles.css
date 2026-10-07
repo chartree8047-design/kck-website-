@@ -8,3 +8,6 @@
 .story-card{overflow:hidden}.story-card>img{min-height:0;max-height:100%}h1{font-weight:700}
 
 @font-face{font-family:'KCK Serif';src:url('/assets/forest-shop/serif.woff');font-weight:400;font-display:swap}@font-face{font-family:'KCK Serif';src:url('/assets/forest-shop/serif-bold.woff');font-weight:700;font-display:swap}
+
+/* Preserve the complete portrait artwork supplied for each process. */
+.product-image{height:auto;aspect-ratio:2/3;display:block;overflow:hidden}.product img{display:block;object-fit:contain}.detail-artwork{margin:0;align-self:start;min-width:0}.detail-artwork img{display:block;width:100%;height:auto}.detail-artwork span{display:block;margin-top:10px;font-size:11px;color:var(--green);text-decoration:underline;text-underline-offset:3px}.detail>div{min-width:0}
