@@ -11,3 +11,5 @@
 
 /* Preserve the complete portrait artwork supplied for each process. */
 .product-image{height:auto;aspect-ratio:2/3;display:block;overflow:hidden}.product img{display:block;object-fit:contain}.detail-artwork{margin:0;align-self:start;min-width:0}.detail-artwork img{display:block;width:100%;height:auto}.detail-artwork span{display:block;margin-top:10px;font-size:11px;color:var(--green);text-decoration:underline;text-underline-offset:3px}.detail>div{min-width:0}
+
+.hero>img{object-position:center 55%}.hero:after{background:linear-gradient(180deg,rgba(15,43,45,.35),rgba(15,43,45,.56))}.hero-content{text-shadow:0 1px 10px rgba(0,0,0,.35)}
