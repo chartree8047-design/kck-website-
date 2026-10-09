@@ -45,7 +45,7 @@ export function App() {
   return <><a className="skip-link" href="#coffee">{th ? 'ข้ามไปเลือกกาแฟ' : 'Skip to coffee'}</a>
     <main className={`site-shell${mobilePreview ? ' mobile-preview' : ''}`}>
       <section className="hero" id="top" aria-labelledby="hero-title">
-        <header className="header"><a className="brand" href="#top">KCK.Coffee</a><nav aria-label={th ? 'เมนูหลัก' : 'Main navigation'}><a href="#story">{th ? 'เรื่องราว / Story' : 'Story'}</a><a href="#prices">{th ? 'ราคา / Prices' : 'Prices'}</a><button className="language" aria-label={th ? 'Switch to English' : 'เปลี่ยนเป็นภาษาไทย'} aria-pressed={!th} onClick={() => setLanguage(th ? 'en' : 'bilingual')}>TH / EN</button></nav></header>
+        <header className="header"><a className="brand" href="#top"><img className="storefront-logo" src="assets/forest-shop/logo-transparent.png" alt="Khun Chang Kian Coffee Farmer" width="1280" height="1280"/><span>KCK.Coffee</span></a><nav aria-label={th ? 'เมนูหลัก' : 'Main navigation'}><a href="#story">{th ? 'เรื่องราว / Story' : 'Story'}</a><a href="#prices">{th ? 'ราคา / Prices' : 'Prices'}</a><button className="language" aria-label={th ? 'Switch to English' : 'เปลี่ยนเป็นภาษาไทย'} aria-pressed={!th} onClick={() => setLanguage(th ? 'en' : 'bilingual')}>TH / EN</button></nav></header>
         <div className="hero-copy"><h1 id="hero-title">Single origin<br/>Khun Chang Kien</h1><p className="tagline">From the forest</p></div>
         <a className="pill story-button" href="#story">{th ? 'อ่านเรื่องราว / Read our story' : 'Read our story'}<ArrowRight aria-hidden="true" size={22}/></a><div className="embroidery" aria-hidden="true" />
       </section>
