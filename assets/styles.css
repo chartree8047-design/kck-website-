@@ -80,9 +80,9 @@ a { color: inherit; }
 .brand-mark--bird {
   width: 11rem;
   height: 5rem;
-  background-image: url("bird-friendly-logo-official.jpeg");
-  background-size: 100% auto;
-  background-position: center 75%;
+  background-image: url("bird-friendly-logo-transparent.png");
+  background-size: contain;
+  background-position: center;
 }
 
 .hero-brands {
