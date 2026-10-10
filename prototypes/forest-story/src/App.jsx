@@ -61,6 +61,13 @@ export function App() {
         <p className="prototype-note">{th?'รายการนี้ใช้คำนวณราคาเท่านั้น ยังไม่ส่งคำสั่งซื้อหรือชำระเงิน':'Estimate only. No order has been submitted and no payment has been made.'}</p>
         <h3 id="shipping-rates">{th?'อัตราค่าจัดส่ง':'Shipping rates'}</h3><table className="shipping-table"><thead><tr><th>{th?'น้ำหนักกาแฟรวม':'Total coffee weight'}</th><th>{th?'ค่าส่ง':'Shipping'}</th></tr></thead><tbody><tr><td>100g–1kg</td><td>50 ฿</td></tr><tr><td>{th?'มากกว่า 1–3kg':'>1–3kg'}</td><td>80 ฿</td></tr><tr><td>{th?'มากกว่า 3–5kg':'>3–5kg'}</td><td>100 ฿</td></tr><tr><td>{th?'มากกว่า 5 แต่น้อยกว่า 10kg':'>5 and <10kg'}</td><td>150 ฿</td></tr><tr><td>{th?'ตั้งแต่ 10kg':'10kg and above'}</td><td>{th?'ฟรี':'Free'}</td></tr></tbody></table>
       </section>
+      <section className="activity-invitation" id="experience" aria-labelledby="activity-heading">
+        <h2 id="activity-heading">{th ? 'จากป่าสู่ถ้วย — มาสัมผัสเรื่องราวกาแฟขุนช่างเคี่ยนด้วยตัวคุณเอง' : 'From the Forest to Your Cup — Experience Khun Chang Kian'}</h2>
+        {th && <p className="activity-subtitle" lang="en">From the Forest to Your Cup — Experience Khun Chang Kian</p>}
+        {th && <p>เดินชมสวนกาแฟใต้ร่มเงาป่า เรียนรู้เรื่องราวจากผู้ปลูก และชิมกาแฟจากกระบวนการแปรรูปหลัก 3 process พร้อมรับของที่ระลึกเป็น drip bag 3 process: Washed · Honey · Natural</p>}
+        <p lang="en">Walk through shade-grown coffee, meet the growers, and taste coffee from three main processing methods, accompanied by a souvenir set of three drip bags: Washed · Honey · Natural.</p>
+        <a className="pill activity-booking-button" href="activity-booking.html">{th ? 'จองกิจกรรม / Book an Experience' : 'Book an Experience'}<ArrowRight aria-hidden="true" size={20}/></a>
+      </section>
       <footer className="forest-footer" aria-label="KCK.Coffee" /><div className="site-links"><a href="index.html">{th ? 'หน้าหลัก / Home' : 'Home'}</a><a href="activity-booking.html">{th ? 'จองกิจกรรม / Book an experience' : 'Book an experience'}<ArrowRight size={18}/></a></div>
     </main>
     {active && <ProductDialog key={active.id} product={active} th={th} onClose={close} mobilePreview={mobilePreview} onAdd={addItem}/>}
