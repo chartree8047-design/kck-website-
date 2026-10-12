@@ -16,7 +16,7 @@ export default function Payment({items,totals,th,onBack}){
  <h3>2. {t('โอนตามยอดที่ร้านยืนยัน','Transfer the shop-confirmed amount')}</h3>
  <p>{t('ชื่อผู้รับ: นาย ชาตรี แซ่ย่าง · ตรวจชื่อผู้รับและยอดเงินในแอปธนาคารก่อนยืนยันโอน','Recipient: นาย ชาตรี แซ่ย่าง (Chartree Sae-Yang). Check the recipient name and amount in your banking app before confirming.')}</p>
  <img className="payment-qr" src="./assets/forest-story/payment-qr.jpeg" width="885" height="1200" alt={t('QR รับเงินของร้าน ชื่อ นาย ชาตรี แซ่ย่าง','Shop payment QR, recipient นาย ชาตรี แซ่ย่าง')}/>
- <a className="outline-button" href="./assets/forest-shop/payment-qr.jpeg" download="KCK-Payment-QR.jpeg">{t('ดาวน์โหลดภาพ QR','DOWNLOAD QR IMAGE')}</a>
+ <a className="outline-button" href="./assets/forest-story/payment-qr.jpeg" download="KCK-Payment-QR.jpeg">{t('ดาวน์โหลดภาพ QR','DOWNLOAD QR IMAGE')}</a>
  <p>{t('ใช้มือถือเครื่องเดียว: บันทึกภาพ QR แล้วเลือกสแกนจากรูปภาพในแอปธนาคาร และกรอกยอดที่ร้านยืนยัน','On one phone: save the QR image, scan it from your banking app’s photo library, and enter the shop-confirmed amount.')}</p>
  <h3>3. {t('ส่งสลิปและที่อยู่ผ่าน LINE','Send the slip and delivery details via LINE')}</h3>
  <a className="button" href={line} target="_blank" rel="noopener noreferrer">{t('ส่งสลิปและที่อยู่ใน LINE','SEND SLIP & ADDRESS IN LINE')} ↗</a>
