@@ -32,12 +32,15 @@ function ProductDialog({ product, th, onClose, mobilePreview, onAdd }) {
   </dialog>;
 }
 export function App() {
-  const [language, setLanguage] = useState('bilingual');
+  const [language, setLanguage] = useState(() => window.KCKOrder.language()==='en'?'en':'bilingual');
   const [active, setActive] = useState(null);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(() => window.KCKOrder.read().coffee);
   const [payment,setPayment]=useState(false);
   const paymentDialog=useRef(null);
   useEffect(()=>{if(payment)paymentDialog.current?.showModal();else paymentDialog.current?.close();},[payment]);
+  useEffect(() => { window.KCKOrder.saveCoffee(items); }, [items]);
+  useEffect(() => { window.KCKOrder.setLanguage(language === 'en' ? 'en' : 'th'); const link=document.querySelector('body > a[href="quote.html"]'); if(link)link.textContent=language==='en'?'Coffee + activities / Request confirmation':'เลือกสินค้า + กิจกรรม / ขอราคา'; }, [language]);
+  useEffect(() => { const sync = () => { setItems(window.KCKOrder.read().coffee); setLanguage(window.KCKOrder.language()==='en'?'en':'bilingual'); }; window.addEventListener('pageshow',sync); window.addEventListener('storage',sync); return () => {window.removeEventListener('pageshow',sync);window.removeEventListener('storage',sync);}; }, []);
   const totals = totalsFor(items);
   const addItem = item => setItems(old => {const same=old.findIndex(i=>i.id===item.id && i.size===item.size && i.roast===item.roast);return same<0 ? [...old,item] : old.map((i,n)=>n===same?{...i,quantity:i.quantity+item.quantity}:i);});
   const mobilePreview = false;
@@ -63,7 +66,7 @@ export function App() {
         {items.length ? <ul className="estimate-items">{items.map((i,n)=><li key={`${i.id}-${i.size}-${i.roast}`}><span>{i.title} · {i.size} · {i.roast} × {i.quantity}<strong>{(priceOf(i.id,i.size)*i.quantity).toLocaleString()} ฿</strong></span><button onClick={()=>setItems(old=>old.filter((_,x)=>x!==n))} aria-label={`${th?'ลบ':'Remove'} ${i.title} ${i.size} ${i.roast}`}><X size={20}/></button></li>)}</ul> : <p>{th ? 'ยังไม่มีสินค้าในรายการคำนวณ' : 'Your estimate is empty.'}</p>}
         <dl className="estimate-totals" aria-live="polite"><div><dt>{th?'น้ำหนักรวม':'Total coffee weight'}</dt><dd>{(totals.weight/1000).toLocaleString()} kg</dd></div><div><dt>{th?'ราคาสินค้า':'Coffee subtotal'}</dt><dd>{totals.subtotal.toLocaleString()} ฿</dd></div><div><dt>{th?'ค่าจัดส่ง':'Shipping'}</dt><dd>{items.length && totals.weight>=10000 ? (th?'ฟรี':'Free') : `${totals.shipping} ฿`}</dd></div><div className="grand-total"><dt>{th?'รวมทั้งหมด':'Total'}</dt><dd>{totals.total.toLocaleString()} ฿</dd></div></dl>
         <p className="prototype-note">{th?'รายการนี้ยังไม่ส่งถึงร้าน กรุณาส่งให้ร้านยืนยันราคาและสต็อกผ่าน LINE หรือ Facebook ก่อนโอน':'This selection has not been sent to the shop. Confirm prices and stock via LINE or Facebook before transferring.'}</p>
-        {items.length>0 && <button className="pill payment-start" onClick={()=>setPayment(true)}>{th?'สรุปยอดและชำระผ่าน QR / Pay via QR':'Summary & QR payment'}<ArrowRight size={20}/></button>}
+        {items.length>0 && <button className="pill payment-start" onClick={()=>{window.KCKOrder.saveCoffee(items);window.location.href='quote.html';}}>{th?'สรุปรายการ / ขอร้านยืนยันราคา':'Review selection / Request confirmation'}<ArrowRight size={20}/></button>}
         <h3 id="shipping-rates">{th?'อัตราค่าจัดส่ง':'Shipping rates'}</h3><table className="shipping-table"><thead><tr><th>{th?'น้ำหนักกาแฟรวม':'Total coffee weight'}</th><th>{th?'ค่าส่ง':'Shipping'}</th></tr></thead><tbody><tr><td>100g–1kg</td><td>50 ฿</td></tr><tr><td>{th?'มากกว่า 1–3kg':'>1–3kg'}</td><td>80 ฿</td></tr><tr><td>{th?'มากกว่า 3–5kg':'>3–5kg'}</td><td>100 ฿</td></tr><tr><td>{th?'มากกว่า 5 แต่น้อยกว่า 10kg':'>5 and <10kg'}</td><td>150 ฿</td></tr><tr><td>{th?'ตั้งแต่ 10kg':'10kg and above'}</td><td>{th?'ฟรี':'Free'}</td></tr></tbody></table>
       </section>
       <section className="activity-invitation" id="experience" aria-labelledby="activity-heading">
@@ -71,9 +74,9 @@ export function App() {
         {th && <p className="activity-subtitle" lang="en">From the Forest to Your Cup — Experience Khun Chang Kian</p>}
         {th && <p>เดินชมสวนกาแฟใต้ร่มเงาป่า เรียนรู้เรื่องราวจากผู้ปลูก และชิมกาแฟจากกระบวนการแปรรูปหลัก 3 process พร้อมรับของที่ระลึกเป็น drip bag 3 process: Washed · Honey · Natural</p>}
         <p lang="en">Walk through shade-grown coffee, meet the growers, and taste coffee from three main processing methods, accompanied by a souvenir set of three drip bags: Washed · Honey · Natural.</p>
-        <a className="pill activity-booking-button" href="activity-booking.html">{th ? 'จองกิจกรรม / Book an Experience' : 'Book an Experience'}<ArrowRight aria-hidden="true" size={20}/></a>
+        <a className="pill activity-booking-button" href="quote.html#activityForm">{th ? 'จองกิจกรรม / Book an Experience' : 'Book an Experience'}<ArrowRight aria-hidden="true" size={20}/></a>
       </section>
-      <footer className="forest-footer" aria-label="KCK.Coffee" /><div className="site-links"><a href="index.html">{th ? 'หน้าหลัก / Home' : 'Home'}</a><a href="activity-booking.html">{th ? 'จองกิจกรรม / Book an experience' : 'Book an experience'}<ArrowRight size={18}/></a></div>
+      <footer className="forest-footer" aria-label="KCK.Coffee" /><div className="site-links"><a href="index.html">{th ? 'หน้าหลัก / Home' : 'Home'}</a><a href="quote.html#activityForm">{th ? 'จองกิจกรรม / Book an experience' : 'Book an experience'}<ArrowRight size={18}/></a></div>
     </main>
     <dialog ref={paymentDialog} className="payment-dialog" aria-labelledby="payment-title" onCancel={()=>setPayment(false)} onClick={e=>{if(e.target===e.currentTarget)setPayment(false)}}><button className="close-button" aria-label={th?'ปิดหน้าชำระเงิน':'Close payment'} onClick={()=>setPayment(false)}><X size={24}/></button>{payment&&items.length>0&&<Payment items={items} totals={totals} th={th} onBack={()=>setPayment(false)}/>}</dialog>
     {active && <ProductDialog key={active.id} product={active} th={th} onClose={close} mobilePreview={mobilePreview} onAdd={addItem}/>}
