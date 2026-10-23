@@ -14,6 +14,7 @@ function ProductDialog({ product, th, onClose, mobilePreview, onAdd }) {
   const [roast, setRoast] = useState(product.roasts[0]);
   const [selected, setSelected] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [addError, setAddError] = useState(false);
   useEffect(() => { dialog.current.showModal(); }, []);
   return <dialog ref={dialog} className={`product-dialog${mobilePreview ? ' mobile-dialog' : ''}`} aria-labelledby="detail-title" onCancel={onClose} onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
     <button className="close-button" aria-label={th ? 'ปิดรายละเอียด' : 'Close details'} onClick={onClose}><X size={24} /></button>
@@ -24,7 +25,8 @@ function ProductDialog({ product, th, onClose, mobilePreview, onAdd }) {
         <fieldset><legend>{th ? 'ระดับการคั่ว / Roast' : 'Roast'}</legend><div className="option-row">{product.roasts.map(r => <label key={r} className={roast === r ? 'option selected' : 'option'}><input type="radio" name="roast" checked={roast === r} onChange={() => { setRoast(r); setSelected(false); }} />{r}</label>)}</div></fieldset>
         <label className="quantity-label">{th ? 'จำนวนถุง / Bags' : 'Bags'}<input type="number" min="1" max="1000" step="1" value={quantity} onChange={e => {setQuantity(e.target.value);setSelected(false);}} /></label>
         <p className="selected-price">{priceOf(product.id,size).toLocaleString()} ฿ / {th ? 'ถุง' : 'bag'}</p>
-        <button className="pill select-button" disabled={!Number.isInteger(Number(quantity)) || Number(quantity)<1 || Number(quantity)>1000} onClick={() => {onAdd({id:product.id,title:product.title,size,roast,quantity:Number(quantity)});setSelected(true);}}>{th ? 'เพิ่มในรายการคำนวณ / Add to estimate' : 'Add to estimate'}<ArrowRight size={20}/></button>
+        <button className="pill select-button" disabled={!Number.isInteger(Number(quantity)) || Number(quantity)<1 || Number(quantity)>1000} onClick={() => {const ok=onAdd({id:product.id,title:product.title,size,roast,quantity:Number(quantity)});setSelected(ok);setAddError(!ok);}}>{th ? 'เพิ่มในรายการคำนวณ / Add to estimate' : 'Add to estimate'}<ArrowRight size={20}/></button>
+        {addError && <p role="status">{th?'รายการนี้รวมได้ไม่เกิน 1,000 ถุง กรุณาลดจำนวนหรือสอบถามร้าน':'This item is limited to 1,000 bags. Reduce the quantity or contact the shop.'}</p>}
         {selected && <div className="selection-result" role="status"><Check size={22}/><div><strong>{th ? 'เพิ่มในรายการแล้ว / Added to estimate' : 'Added to estimate'}</strong><p>{product.title} · {size} · {roast} × {quantity}</p></div></div>}
         <p className="prototype-note">{th ? 'หน้านี้ใช้ดูรายละเอียดและเลือกตัวเลือกกาแฟ ยังไม่ส่งคำสั่งซื้อ' : 'This page shows coffee options. No order has been submitted.'}</p>
       </div>
@@ -42,7 +44,7 @@ export function App() {
   useEffect(() => { window.KCKOrder.setLanguage(language === 'en' ? 'en' : 'th'); const link=document.querySelector('body > a[href="quote.html"]'); if(link)link.textContent=language==='en'?'Coffee + activities / Request confirmation':'เลือกสินค้า + กิจกรรม / ขอราคา'; }, [language]);
   useEffect(() => { const sync = () => { setItems(window.KCKOrder.read().coffee); setLanguage(window.KCKOrder.language()==='en'?'en':'bilingual'); }; window.addEventListener('pageshow',sync); window.addEventListener('storage',sync); return () => {window.removeEventListener('pageshow',sync);window.removeEventListener('storage',sync);}; }, []);
   const totals = totalsFor(items);
-  const addItem = item => setItems(old => {const same=old.findIndex(i=>i.id===item.id && i.size===item.size && i.roast===item.roast);return same<0 ? [...old,item] : old.map((i,n)=>n===same?{...i,quantity:i.quantity+item.quantity}:i);});
+  const addItem = item => {const old=items.find(i=>i.id===item.id && i.size===item.size && i.roast===item.roast);if((old?.quantity||0)+item.quantity>1000)return false;setItems(current=>{const same=current.findIndex(i=>i.id===item.id && i.size===item.size && i.roast===item.roast);return same<0?[...current,item]:current.map((i,n)=>n===same?{...i,quantity:i.quantity+item.quantity}:i);});return true;};
   const mobilePreview = false;
   const th = language !== 'en';
   useEffect(() => { requestAnimationFrame(() => { const id = location.hash.slice(1); if (id) document.getElementById(id)?.scrollIntoView(); }); }, []);
@@ -52,7 +54,7 @@ export function App() {
   return <><a className="skip-link" href="#coffee">{th ? 'ข้ามไปเลือกกาแฟ' : 'Skip to coffee'}</a>
     <main className={`site-shell${mobilePreview ? ' mobile-preview' : ''}`}>
       <section className="hero" id="top" aria-labelledby="hero-title">
-        <header className="header"><a className="brand" href="#top"><img className="storefront-logo" src="assets/forest-shop/logo-transparent.png" alt="Khun Chang Kian Coffee Farmer" width="1280" height="1280"/><span>KCK.Coffee</span></a><nav aria-label={th ? 'เมนูหลัก' : 'Main navigation'}><a href="#story">{th ? 'เรื่องราว / Story' : 'Story'}</a><a href="#prices">{th ? 'ราคา / Prices' : 'Prices'}</a><button className="language" aria-label={th ? 'Switch to English' : 'เปลี่ยนเป็นภาษาไทย'} aria-pressed={!th} onClick={() => setLanguage(th ? 'en' : 'bilingual')}>TH / EN</button></nav></header>
+        <header className="header"><a className="brand" href="#top"><img className="storefront-logo" src="assets/forest-shop/logo-transparent.png" alt="Khun Chang Kian Coffee Farmer" width="1280" height="1280"/><span>KCK.Coffee</span></a><nav aria-label={th ? 'เมนูหลัก' : 'Main navigation'}><a href="index.html">{th?'หน้าหลัก':'Home'}</a><a href="#story">{th ? 'เรื่องราว / Story' : 'Story'}</a><a href="#prices">{th ? 'ราคา / Prices' : 'Prices'}</a><button className="language" aria-label={th ? 'Switch to English' : 'เปลี่ยนเป็นภาษาไทย'} aria-pressed={!th} onClick={() => setLanguage(th ? 'en' : 'bilingual')}>TH / EN</button></nav></header>
         <div className="hero-copy"><h1 id="hero-title">Single origin<br/>Khun Chang Kien</h1><p className="tagline">From the forest</p></div>
         <a className="pill story-button" href="#story">{th ? 'อ่านเรื่องราว / Read our story' : 'Read our story'}<ArrowRight aria-hidden="true" size={22}/></a><div className="embroidery" aria-hidden="true" />
       </section>
