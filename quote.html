@@ -30,7 +30,8 @@ for(const id of draftFields){if(typeof draft[id]==='string')$(id).value=draft[id
 roastOptions();if(order.roasts($('process').value.toLowerCase()).includes(draft.roast))$('roast').value=draft.roast;
 for(const id of [...draftFields,'roast']){for(const event of ['input','change'])$(id).addEventListener(event,saveDraft);}
 window.addEventListener('pagehide',saveDraft);
-const requestedActivity=new URLSearchParams(location.search).get('activity');if(['walk','stay'].includes(requestedActivity))$('activity').value=requestedActivity;
+const requestedActivity=new URLSearchParams(location.search).get('activity');const navigationType=performance.getEntriesByType('navigation')[0]?.type;
+if(['walk','stay'].includes(requestedActivity) && (!['reload','back_forward'].includes(navigationType) || !['walk','stay'].includes(draft.activity)))$('activity').value=requestedActivity;
 const dateParts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Bangkok',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());$('date').min=['year','month','day'].map(k=>dateParts.find(p=>p.type===k).value).join('-');$('activity').onchange=updateActivity;
 $('activityForm').onsubmit=e=>{e.preventDefault();if(!$('activityForm').reportValidity())return;const type=$('activity').value,guests=Number($('guests').value),date=$('date').value;if(!Number.isInteger(guests)||date<$('date').min)return;activities.push({type,guests,date});save();render()};
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('message').value);$('status').textContent=t('คัดลอกแล้ว เปิด LINE หรือ Facebook แล้ววางข้อความส่งให้ร้าน','Copied. Open LINE or Facebook and paste the message to the shop.')}catch{$('message').focus();$('message').select();$('status').textContent=t('กรุณาคัดลอกข้อความที่เลือก แล้วนำไปวางในแชตร้าน','Copy the selected message and paste it into the shop chat.')}};
