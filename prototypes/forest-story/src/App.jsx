@@ -74,6 +74,7 @@ export function App() {
         {th && <p className="activity-subtitle" lang="en">From the Forest to Your Cup — Experience Khun Chang Kian</p>}
         {th && <p>เดินชมสวนกาแฟใต้ร่มเงาป่า เรียนรู้เรื่องราวจากผู้ปลูก และชิมกาแฟจากกระบวนการแปรรูปหลัก 3 process พร้อมรับของที่ระลึกเป็น drip bag 3 process: Washed · Honey · Natural</p>}
         <p lang="en">Walk through shade-grown coffee, meet the growers, and taste coffee from three main processing methods, accompanied by a souvenir set of three drip bags: Washed · Honey · Natural.</p>
+        <div style={{display:'flex',flexWrap:'wrap',gap:'16px',margin:'24px 0'}}><a className="pill" href="activity-ecology.html">{th?'กิจกรรมที่ 1 · เดินเรียนรู้และชิมกาแฟ':'Experience 1 · Ecology Coffee Walk'}</a><a className="pill" href="activity-2d1n.html">{th?'กิจกรรมที่ 2 · เรียนรู้กาแฟ 2 วัน 1 คืน':'Experience 2 · Coffee Origin Immersion'}</a></div>
         <a className="pill activity-booking-button" href="quote.html#activityForm">{th ? 'จองกิจกรรม / Book an Experience' : 'Book an Experience'}<ArrowRight aria-hidden="true" size={20}/></a>
       </section>
       <footer className="forest-footer" aria-label="KCK.Coffee" /><div className="site-links"><a href="index.html">{th ? 'หน้าหลัก / Home' : 'Home'}</a><a href="quote.html#activityForm">{th ? 'จองกิจกรรม / Book an experience' : 'Book an experience'}<ArrowRight size={18}/></a></div>
