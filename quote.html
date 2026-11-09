@@ -61,7 +61,7 @@ function validateActivityDate(){
 }
 restoreActivities();
 
-function shipping(g){return !g?0:g<=1000?50:g<=3000?80:g<=5000?100:g<10000?150:0}
+function shipping(g){return !g?0:g<=1000?50:g<=3000?80:g<=5000?100:g<=10000?150:0}
 function activityPrice(kind,n){return kind==='walk'?Math.max(1200,n*300):n*(n<=5?4290:3890)}
 function roastOptions(){const old=$('roast').value;$('roast').replaceChildren(...order.roasts($('process').value.toLowerCase()).map(r=>{const o=document.createElement('option');o.value=r;o.textContent=t({'Light Roast':'คั่วอ่อน','Medium Roast':'คั่วกลาง','Dark Roast':'คั่วเข้ม'}[r],r);return o}));if(order.roasts($('process').value.toLowerCase()).includes(old))$('roast').value=old;}
 function rows(){return [...coffee.map(i=>({kind:'coffee',label:`${i.title} · ${i.size} · ${t({'Light Roast':'คั่วอ่อน','Medium Roast':'คั่วกลาง','Dark Roast':'คั่วเข้ม'}[i.roast],i.roast)} × ${i.quantity}`,amount:order.priceOf(i.id,i.size)*i.quantity})),...activities.map(i=>({kind:'activity',label:`${i.type==='walk'?t('เดินสวนและชิม 3 โพรเซส','Farm walk & three-process tasting'):t('เรียนรู้กาแฟ 2 วัน 1 คืน','Coffee immersion 2 days / 1 night')} · ${i.date} · ${i.guests} ${t('คน (รอยืนยันวันว่าง)','people (availability to confirm)')}`,amount:activityPrice(i.type,i.guests)}))]}
