@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chartree8047-design.github.io/kck-website-/sitemap.xml
